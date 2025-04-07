@@ -1,0 +1,12 @@
+This is an indoor scene, and now you need to ask a question to the embodied question answering model, asking the agent to explore the scene and collect information before answering the question.
+Request that the question does not include vague descriptions such as 'the room' or 'the scene', and instead uses a specific description such as 'the living room' or 'the bed room'.
+
+The types of question include object, existence, attribute, location, status, knowledge, and quantity.
+
+The output must strictly following the format below:
+```
+Question: [question]
+Options: [A. xxx; B. xxx; C. xxx; D. xxx]
+Answer: [answer]
+Label: [label]
+```

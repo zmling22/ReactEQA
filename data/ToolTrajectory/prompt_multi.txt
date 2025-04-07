@@ -1,0 +1,25 @@
+Select one or some object from those image (they must be related objects). 
+Now, I hope you POSE A QUESTION based on the relationship between these two objects, and the question must meet the following requirements:
+1. Select the question label from the following list: [Comparison, Relationship, Counting, Attribute];
+1. do not ask "why" and "how"; 
+2. the names of the objects must appear in the question;
+3. avoid descriptions such as "left image" or "right image";
+4. provide four candidate answer options as well as the correct answer option.
+
+For example:
+Does <OBJ1> share same color as <OBJ2> in <ROOM>?
+Does <OBJ1> in <ROOM1> share same color as <OBJ2> in <ROOM2>?
+Is <OBJ1> bigger/smaller than <OBJ2> in <ROOM>?
+Is <OBJ1> in <ROOM1> bigger/smaller than <OBJ2> in <ROOM2>?
+Is <OBJ1> closer than/farther from <OBJ2> than <OBJ3> in <ROOM>?
+Is <ROOM1> bigger/smaller than <ROOM2> in the house?
+How many <OBJ1> in <ROOM1>?
+How many rooms have <OBJ1>?
+
+The output must strictly following the format below:
+```
+Question: [question]
+Options: [A. xxx; B. xxx; C. xxx; D. xxx]
+Answer: [answer]
+Label: [label]
+```
