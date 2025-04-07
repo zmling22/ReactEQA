@@ -1,0 +1,29 @@
+[
+    {
+        "question": "What is the trajectory of the tool?",
+        "answer": "The trajectory of the tool is a straight line from the starting point to the end point.",
+        "tool": "drill",
+        "start_point": [0, 0, 0],
+        "end_point": [10, 10, 10],
+        "trajectory": [
+            {
+                "step_1": {
+                    "position": [0, 0, 0],
+                    "rotation": [0, 0, 0],
+                    "action": "start drilling"
+                }
+            }
+        },
+            [1, 1, 1],
+            [2, 2, 2],
+            [3, 3, 3],
+            [4, 4, 4],
+            [5, 5, 5],
+            [6, 6, 6],
+            [7, 7, 7],
+            [8, 8, 8],
+            [9, 9, 9],
+            [10, 10, 10]
+        ]
+    }
+]
