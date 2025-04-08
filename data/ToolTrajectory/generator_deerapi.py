@@ -31,7 +31,7 @@ def requests_api(images, prompt):
             "max_tokens": 400
         })
     headers = {
-        'Authorization': 'sk-lrenmYBYEOQH0rqv9rlMmoTaELkvZni1afswhr6be3tTN44S',
+        'Authorization': 'your token',
         'Content-Type': 'application/json'
     }
     conn.request("POST", "/v1/chat/completions", payload, headers)
