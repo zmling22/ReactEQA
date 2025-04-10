@@ -1,13 +1,20 @@
 import trimesh
 import numpy as np
 import pickle
+import json
 
-
-def visualize(scene_path, objects_path, unexcepts=["wall"]):
+def visualize(scene_path, objects_path, unexcepts=[]):
     # 1. 加载 GLB 场景
     scene = trimesh.load(scene_path)
 
-    data = pickle.load(open(objects_path, "rb"))
+    if objects_path.endswith('.json'):
+        # 2. 加载 JSON 对象数据
+        with open(objects_path, 'r') as f:
+            data = json.load(f)
+    elif objects_path.endswith('.pkl'):
+        # 2. 加载 PKL 对象数据
+        with open(objects_path, 'rb') as f:
+            data = pickle.load(f)
 
     for obj in data['objects']:
         bbox = obj['bbox']
@@ -53,9 +60,9 @@ def visualize(scene_path, objects_path, unexcepts=["wall"]):
         # 添加到场景
         scene.add_geometry(bbox_wireframe)
 
-    scene.export('HkseAnWCgqk_bbox.ply')
+    scene.export('wcojb4TFT35.ply')
 
 if __name__ == "__main__":
-    scene_path = "data/HM3D/00006-HkseAnWCgqk/HkseAnWCgqk.glb"
-    objects_path = "HkseAnWCgqk_objects.pkl"
+    scene_path = "data/HM3D/00802-wcojb4TFT35/wcojb4TFT35.glb"
+    objects_path = "wcojb4TFT35.semantic.json"
     visualize(scene_path, objects_path)
