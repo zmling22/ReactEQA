@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 import json
 
-def visualize(scene_path, objects_path, unexcepts=[]):
+def visualize(scene_path, objects_path, output_path, unexcepts=[]):
     # 1. 加载 GLB 场景
     scene = trimesh.load(scene_path)
 
@@ -60,9 +60,10 @@ def visualize(scene_path, objects_path, unexcepts=[]):
         # 添加到场景
         scene.add_geometry(bbox_wireframe)
 
-    scene.export('wcojb4TFT35.ply')
+    scene.export(output_path)
 
 if __name__ == "__main__":
     scene_path = "data/HM3D/00802-wcojb4TFT35/wcojb4TFT35.glb"
     objects_path = "wcojb4TFT35.semantic.json"
-    visualize(scene_path, objects_path)
+    output_path = "wcojb4TFT35.ply"
+    visualize(scene_path, objects_path, output_path)
