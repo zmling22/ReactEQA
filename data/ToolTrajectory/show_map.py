@@ -1,3 +1,6 @@
+# 将场景的导航网格可视化为自顶向下的地图
+# 该脚本使用Habitat-sim的API获取自顶向下的地图，并使用matplotlib进行可视化
+
 import numpy as np
 import os
 import imageio

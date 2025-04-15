@@ -1,3 +1,6 @@
+# 可视化3D Bounding Box
+# 该脚本使用trimesh库加载GLB文件，并在每个物体上绘制3D Bounding Box
+
 import trimesh
 import numpy as np
 import pickle
@@ -114,6 +117,18 @@ def visualize(scene_path, objects_path, output_path, unexcepts=[]):
         [bbox_max[0], bbox_max[1], bbox_max[2]],  # 6
         [bbox_min[0], bbox_max[1], bbox_max[2]]   # 7
         ])
+
+        # # 旋转绕 Y 轴 90 度
+        # theta = np.radians(270)
+        # rotation_matrix = np.array([
+        #     [1, 0, 0],
+        #     [0, np.cos(theta), -np.sin(theta)],
+        #     [0, np.sin(theta),  np.cos(theta)]
+        # ])
+        # # vertices = vertices - bbox_center
+        # vertices = vertices @ rotation_matrix.T
+        # # vertices = vertices + bbox_center
+
         edges = np.array([
         [0, 1], [1, 2], [2, 3], [3, 0],  # 底面
         [4, 5], [5, 6], [6, 7], [7, 4],  # 顶面
@@ -137,6 +152,7 @@ def visualize(scene_path, objects_path, output_path, unexcepts=[]):
 
 if __name__ == "__main__":
     scene_path = "data/HM3D/00802-wcojb4TFT35/wcojb4TFT35.glb"
+    # scene_path = "data/HM3D/00006-HkseAnWCgqk/HkseAnWCgqk.glb"
     objects_path = "wcojb4TFT35.semantic.json"
-    output_path = "wcojb4TFT35.ply"
+    output_path = "HkseAnWCgqk.ply"
     visualize(scene_path, objects_path, output_path)

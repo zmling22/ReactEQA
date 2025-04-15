@@ -1,3 +1,4 @@
+# 从指定场景中随机采样 Agent 的位置和姿态，并保存 RGB 图像和状态信息
 import habitat_sim
 import numpy as np
 import random

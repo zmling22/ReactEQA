@@ -10,14 +10,18 @@ from sklearn.cluster import DBSCAN
 
 #配置路径
 SCENE_ID = "wcojb4TFT35"
-BASE_DIR = "val-data/hm3d-val-habitat-v0.2/00802-wcojb4TFT35"
+BASE_DIR = "data/HM3D/00802-wcojb4TFT35"
 SCENE_PATH = os.path.join(BASE_DIR, f"{SCENE_ID}.basis.glb")
 NAVMESH_PATH = os.path.join(BASE_DIR, f"{SCENE_ID}.basis.navmesh")
 
-RGB_OUT = os.path.join(BASE_DIR, "rgb")
-DEPTH_OUT = os.path.join(BASE_DIR, "depth")
-POSE_OUT = os.path.join(BASE_DIR, "pose")
-INTRINSIC_PATH = os.path.join(BASE_DIR, "intrinsic.json")
+# RGB_OUT = os.path.join(BASE_DIR, "rgb")
+# DEPTH_OUT = os.path.join(BASE_DIR, "depth")
+# POSE_OUT = os.path.join(BASE_DIR, "pose")
+# INTRINSIC_PATH = os.path.join(BASE_DIR, "intrinsic.json")
+RGB_OUT = os.path.join("tmp", "rgb")
+DEPTH_OUT = os.path.join("tmp", "depth")
+POSE_OUT = os.path.join("tmp", "pose")
+INTRINSIC_PATH = os.path.join("tmp", "intrinsic.json")
 
 os.makedirs(RGB_OUT, exist_ok=True)
 os.makedirs(DEPTH_OUT, exist_ok=True)
@@ -145,7 +149,7 @@ def collect_data():
             obs = sim.get_sensor_observations()
             color_img = obs["color"][:, :, :3][:, :, ::-1]
             depth_img = obs["depth"] * 1000.0
-            import pdb;pdb.set_trace()
+            
             cv2.imwrite(os.path.join(RGB_OUT, f"{frame_id:05d}.png"), color_img)
             cv2.imwrite(os.path.join(DEPTH_OUT, f"{frame_id:05d}.png"), depth_img.astype(np.uint16))
 

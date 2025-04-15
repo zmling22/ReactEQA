@@ -1,3 +1,5 @@
+# 请求deerapi生成问题
+
 import os
 from openai import OpenAI
 import base64

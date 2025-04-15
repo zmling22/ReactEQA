@@ -1,3 +1,5 @@
+# 提取语义分割结果中的目标信息保存为pkl
+
 import trimesh
 import numpy as np
 from collections import defaultdict

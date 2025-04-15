@@ -66,7 +66,6 @@ def save_instance_metadata_json(path, instance_metadata_list):
     print(f"目标信息 JSON 已保存：{path}")
 
 
-
 def merge_duplicate_instances_with_metadata(global_points, instance_to_class, class_to_color, iou_threshold=0.3):
     def get_aabb(points):
         min_xyz = np.min(points, axis=0)
@@ -175,14 +174,13 @@ def main():
 
         image_tensor = torch.from_numpy(image).permute(2, 0, 1).float() / 255.0
         boxes, masks, phrases = grounded_sam_inference(image_tensor, TEXT_PROMPT, grounded_model)
-        
+
 
         if boxes is None or len(boxes) == 0:
             print(f"No objects detected in {rgb_file}")
             continue
 
         pts = depth_to_points(depth, K)
-        #import pdb;pdb.set_trace()
         pts_world = (pose[:3, :3] @ pts.T + pose[:3, 3:4]).T
 
         for j, mask in enumerate(masks):

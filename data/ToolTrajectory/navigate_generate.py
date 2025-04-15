@@ -1,3 +1,7 @@
+# Author: zml
+# 该脚本用于在Habitat-sim中生成路径并保存为视频
+# 并将路径点转换为动作序列
+
 import os
 import numpy as np
 import quaternion
