@@ -9,7 +9,7 @@ import json
 import csv
 
 from tqdm import tqdm
-from src.habitat import (
+from src.utils.habitat import (
     make_simple_cfg,
     pos_normal_to_habitat,
     pos_habitat_to_normal,

@@ -3,6 +3,13 @@
         "question": "What is the trajectory of the tool?",
         "proposals": ["A", "B", "C"],
         "answer": "The trajectory of the tool is a straight line from the starting point to the end point.",
+        "related_objects": [
+            {
+                "category_name": "chair", 
+                "region": 1, 
+                "position": [0.0, 0.0, 0.0]
+            }
+        ],
         "init_position": [0, 0, 0],
         "init_rotation": [0, 0, 0, 0],
         "trajectory": [

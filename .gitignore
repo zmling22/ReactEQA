@@ -3,3 +3,6 @@ data/ToolTrajectory/sample_scene
 *.ply
 *.json
 tmp/*
+generator_deerapi.py
+__pycache__/
+react_eqa.egg-info/

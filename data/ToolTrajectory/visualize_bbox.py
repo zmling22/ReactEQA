@@ -96,6 +96,7 @@ def visualize(scene_path, objects_path, output_path, unexcepts=[]):
         bbox = obj['bbox']
         name = obj['category_name']
         color = obj['color']
+        dominant_color = obj['dominant_color']
 
         if name in unexcepts:
             continue
@@ -108,14 +109,14 @@ def visualize(scene_path, objects_path, output_path, unexcepts=[]):
 
         # 创建 Bounding Box 可视化
         vertices = np.array([
-        [bbox_min[0], bbox_min[1], bbox_min[2]],  # 0
-        [bbox_max[0], bbox_min[1], bbox_min[2]],  # 1
-        [bbox_max[0], bbox_max[1], bbox_min[2]],  # 2
-        [bbox_min[0], bbox_max[1], bbox_min[2]],  # 3
-        [bbox_min[0], bbox_min[1], bbox_max[2]],  # 4
-        [bbox_max[0], bbox_min[1], bbox_max[2]],  # 5
-        [bbox_max[0], bbox_max[1], bbox_max[2]],  # 6
-        [bbox_min[0], bbox_max[1], bbox_max[2]]   # 7
+            [bbox_min[0], bbox_min[1], bbox_min[2]],  # 0
+            [bbox_max[0], bbox_min[1], bbox_min[2]],  # 1
+            [bbox_max[0], bbox_max[1], bbox_min[2]],  # 2
+            [bbox_min[0], bbox_max[1], bbox_min[2]],  # 3
+            [bbox_min[0], bbox_min[1], bbox_max[2]],  # 4
+            [bbox_max[0], bbox_min[1], bbox_max[2]],  # 5
+            [bbox_max[0], bbox_max[1], bbox_max[2]],  # 6
+            [bbox_min[0], bbox_max[1], bbox_max[2]]   # 7
         ])
 
         # # 旋转绕 Y 轴 90 度
@@ -151,8 +152,8 @@ def visualize(scene_path, objects_path, output_path, unexcepts=[]):
     scene.export(output_path)
 
 if __name__ == "__main__":
-    scene_path = "data/HM3D/00802-wcojb4TFT35/wcojb4TFT35.glb"
+    scene_path = "data/HM3D/00006-HkseAnWCgqk/HkseAnWCgqk.glb"
     # scene_path = "data/HM3D/00006-HkseAnWCgqk/HkseAnWCgqk.glb"
-    objects_path = "wcojb4TFT35.semantic.json"
+    objects_path = "data/HM3D/00006-HkseAnWCgqk/HkseAnWCgqk.objects.pkl"
     output_path = "HkseAnWCgqk.ply"
     visualize(scene_path, objects_path, output_path)

@@ -7,10 +7,18 @@ import csv
 from tqdm import tqdm
 import http.client
 import json
+import numpy as np
+import cv2
 
-def convert_image_to_base64(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode('utf-8')
+def convert_image_to_base64(image):
+    if os.path.exists(image):
+        with open(image, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode('utf-8')
+    elif isinstance(image, np.ndarray):
+        _, buffer = cv2.imencode('.jpg', image)
+        return base64.b64encode(buffer).decode('utf-8')
+    elif isinstance(image, str):
+        return image
 
 def requests_api(images, prompt):
     image_urls = []
@@ -33,12 +41,16 @@ def requests_api(images, prompt):
             "max_tokens": 400
         })
     headers = {
-        'Authorization': 'your token',
+        'Authorization': 'sk-lrenmYBYEOQH0rqv9rlMmoTaELkvZni1afswhr6be3tTN44S',
         'Content-Type': 'application/json'
     }
-    conn.request("POST", "/v1/chat/completions", payload, headers)
-    res = conn.getresponse()
-    data = json.loads(res.read().decode("utf-8"))
+
+    try:
+        conn.request("POST", "/v1/chat/completions", payload, headers)
+        res = conn.getresponse()
+        data = json.loads(res.read().decode("utf-8"))
+    except:
+        print(f"Error occured: {res.status}, {res.reason}")
 
     return data
 

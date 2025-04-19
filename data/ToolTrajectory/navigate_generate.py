@@ -15,7 +15,13 @@ from scipy.spatial.transform import Rotation
 import cv2
 import math
 from show_map import display_map
-
+from src.utils.habitat import (
+    make_simple_cfg,
+    pos_normal_to_habitat,
+    pos_habitat_to_normal,
+    pose_habitat_to_normal,
+    pose_normal_to_tsdf,
+)
 
 # 将路径转换为前进、左转、右转动作
 def path_to_actions(path, start_rotation, end_rotation, rotation_step=10, move_step=0.1):
